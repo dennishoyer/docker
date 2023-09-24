@@ -1,9 +1,42 @@
 version: "3.9"
 services:
-  system-cloudflared:
-    container_name: system-cloudflared
-    image: cloudflare/cloudflared
-    restart: unless-stopped
-    command: tunnel run
+  postgres:
+    container_name: postgres
+    image: postgres:11.1
+    restart: always
+    network_mode: host
+    ports:
+      - "5234:5234"
     environment:
-      - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+      POSTGRES_USER: dh19
+      POSTGRES_PASSWORD: dh19pp
+    volumes:
+      - c:/Users/Saskia/repos/dh-docker/volumes/postgres:/var/lib/postgresql/data
+
+  influxdb:
+    container_name: influxdb
+    image: influxdb:1.7.1
+    restart: unless-stopped
+    network_mode: host
+    ports:
+      - "8086:8086"
+      - "8083:8083"
+    environment:
+      INFLUXDB_DB: home
+      INFLUXDB_USER: dh19
+      INFLUXDB_USER_PASSWORD: dh19pp
+    volumes:
+      - c:/Users/Saskia/repos/dh-docker/volumes/influxdb:/var/lib/influxdb
+
+  grafana:
+    depends_on:
+      - influxdb
+    image: grafana/grafana:latest
+    container_name: grafana
+    network_mode: host
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,briangann-gauge-panel,natel-plotly-panel,grafana-simple-json-datasource
+    volumes:
+      - c:/Users/Saskia/repos/dh-docker/volumes/grafana:/var/lib/grafana
