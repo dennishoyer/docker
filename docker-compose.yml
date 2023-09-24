@@ -1,11 +1,11 @@
 version: "3"
 services:
-  portainer:
-    container_name: portainer
+  sys-portainer:
+    container_name: sys-portainer
     image: portainer/portainer-ce:latest
     ports:
-      - 9000:9000
-      - 9443:9443
+      - 9001:9000
+      - 9444:9443
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
