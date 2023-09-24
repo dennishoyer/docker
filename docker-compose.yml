@@ -1,13 +1,10 @@
-version: "3"
+version: "3.9"
 services:
-  sys-portainer:
-    container_name: sys-portainer
-    image: portainer/portainer-ce:latest
-    ports:
-      - 9001:9000
-      - 9444:9443
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+  system-cloudflared:
+    container_name: system-cloudflared
+    image: cloudflare/cloudflared
     restart: unless-stopped
+    command: tunnel run
+    env_file: system.env
     environment:
-      - COMPOSE_CONVERT_WINDOWS_PATHS=1
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN}
