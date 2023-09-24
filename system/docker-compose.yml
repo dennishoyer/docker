@@ -7,3 +7,16 @@ services:
     command: tunnel run
     environment:
       - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+
+  system-dashboard:
+    container_name: system-dashboard
+    image: lissy93/dashy
+    volumes:
+      - c:/Users/Saskia/repos/dh-docker/system/dashboard.yml:/app/public/conf.yml
+    ports:
+      - 80:80
+    environment:
+      - NODE_ENV=production
+      - UID=0
+      - GID=0
+    restart: unless-stopped

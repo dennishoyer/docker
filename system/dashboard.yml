@@ -1,0 +1,58 @@
+pageInfo:
+  title: m1 dev env
+  navLinks: []
+appConfig:
+  faviconApi: allesedv
+  theme: dracula
+  layout: vertical
+  iconSize: large
+  language: de
+  statusCheck: true
+sections:
+  - name: Services
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Portainer
+        icon: hl-docker
+        url: https://docker.dh19.de
+        statusCheck: true
+        id: 0_836_portainer
+      - title: Status
+        icon: hl-uptime-kuma
+        url: https://status.dh19.de
+        statusCheck: true
+        id: 1_836_status
+      - title: Postgres Admin
+        description: ''
+        icon: hl-pgadmin
+        url: https://pgadmin.dennishoyer.com
+        id: 2_836_postgresadmin
+      - title: Cloudflare Tunnel
+        icon: favicon
+        url: >-
+          https://dash.teams.cloudflare.com/3ebe65c531d29ca9dd24e28af3da9a82/access/tunnels/edit/b6b73f03-469e-4e18-82f8-de8dd1682792
+        id: 3_836_cloudflaretunnel
+      - title: Redis UI
+        icon: hl-redis
+        url: https://redis.dh19.de/
+        statusCheck: true
+        id: 4_836_redisui
+  - name: devenv
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Theme
+        description: '@dennishoyer/vscode-theme'
+        url: _theme.dh19.de
+        target: newtab
+        statusCheck: true
+        id: 0_648_theme
