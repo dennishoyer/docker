@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: ghcr.io/home-assistant/home-assistant:stable
+    restart: unless-stopped
+    privileged: true
+    entrypoint: ["/init"]
+    ports:
+      - 8123:8123
+    volumes:
+      - c:/homeassistant:/config
+    environment:
+      - TZ=Europe/Berlin
+      - LANG=de_DE.UTF-8
+    networks:
+      - homenet
+
+  homeassistant-cloudflare:
+    container_name: homeassistant-cloudflare
+    image: cloudflare/cloudflared
+    restart: unless-stopped
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+    networks:
+      - homenet
+
+    
+networks:
+  homenet:
+    driver: bridge
