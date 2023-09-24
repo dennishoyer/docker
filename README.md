@@ -1,13 +1,4 @@
 # @dennishoyer | Docker Stacks
-
-# Usage
-
-    git clone https://github.com/codingPear/home-assistant-docker-compose.git
-    cd home-assistant-docker-compose
-    nano -l .env #or whatever editor you prefer
-    (change default settings & save)
-    docker-compose up -d
-    
     
 ## Stacks
 
