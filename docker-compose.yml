@@ -11,7 +11,7 @@ services:
       POSTGRES_USER: dh19
       POSTGRES_PASSWORD: dh19pp
     volumes:
-      - c:/Users/Saskia/repos/dh-docker/volumes/postgres:/var/lib/postgresql/data
+      - c:/docker/postgres:/var/lib/postgresql/data
 
   influxdb:
     container_name: influxdb
@@ -26,7 +26,7 @@ services:
       INFLUXDB_USER: dh19
       INFLUXDB_USER_PASSWORD: dh19pp
     volumes:
-      - c:/Users/Saskia/repos/dh-docker/volumes/influxdb:/var/lib/influxdb
+      - c:/docker/influxdb:/var/lib/influxdb
 
   grafana:
     depends_on:
@@ -39,4 +39,4 @@ services:
     environment:
       - GF_INSTALL_PLUGINS=grafana-clock-panel,briangann-gauge-panel,natel-plotly-panel,grafana-simple-json-datasource
     volumes:
-      - c:/Users/Saskia/repos/dh-docker/volumes/grafana:/var/lib/grafana
+      - c:/docker/grafana:/var/lib/grafana
