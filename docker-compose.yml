@@ -10,7 +10,7 @@ services:
       POSTGRES_USER: dh19
       POSTGRES_PASSWORD: dh19pp
     volumes:
-      - c:/Users/Saskia/docker/postgres:/var/lib/postgresql/data
+      - c:/Users/Saskia/docker/postgres/data:/var/lib/postgresql/data
 
   influxdb:
     container_name: data-influxdb
