@@ -1,1 +1,5 @@
 .env
+
+data/volumes/grafana/*
+data/volumes/influxdb/*
+data/volumes/postgres/*
